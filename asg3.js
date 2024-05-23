@@ -84,7 +84,13 @@ function setupWebGL() {
     return;
   }
 
-  hud = document.getElementById('2d').getContext('2d');
+  hud = document.getElementById('2d');
+  hud.addEventListener("click", async () => {
+    await canvas.requestPointerLock({
+      unadjustedMovement: true
+    });
+  }, false);
+  hud = hud.getContext('2d')
 
   gl.enable(gl.DEPTH_TEST);
   gl.enable(gl.BLEND);
