@@ -142,6 +142,8 @@ class Enemy {
     }
 
     update(dt) {
+        if (!g_Scene.placedReady) return;
+        
         if (this.waitForPlayerToBeInBounds) {
             this.boundsTimer += dt;
             if (this.boundsTimer >= 1) {

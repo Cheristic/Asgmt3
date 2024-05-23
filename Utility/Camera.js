@@ -143,6 +143,8 @@ class Camera {
     }
 
     update(dt) {
+        if (!g_Scene.placedReady) return;
+
         this.keyboardInput();
 
         // check for collision with enemy
@@ -151,15 +153,14 @@ class Camera {
             var pos = [e.base.matrixBuffer.elements[12], e.base.matrixBuffer.elements[13], e.base.matrixBuffer.elements[14]]
             if (Math.abs(-this.g_eyePos.elements[2] - pos[0]) <= .25 && Math.abs(this.g_eyePos.elements[0] - pos[2]) <= .25 ) {
                 if (!this.isRestarting) {
-                    document.dispatchEvent(this.restartEvent);
                     g_Scene.placedReady = false;
+                    document.dispatchEvent(this.restartEvent);
                     this.isRestarting = true;
                 }
 
             }
         } 
 
-        g_Scene.placedReady = true;
         this.isRestarting = false;
 
         // check for collision with crystal

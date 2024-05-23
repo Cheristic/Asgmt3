@@ -145,6 +145,7 @@ class Scene {
             for (let i = 0; i < g_Scene.g_enemies.length; i++) {
                 g_Scene.g_enemies[i].restart();
             }
+            g_Scene.placedReady = true;
         });
 
         // https://stackoverflow.com/questions/48969495/in-javascript-how-do-i-should-i-use-async-await-with-xmlhttprequest
